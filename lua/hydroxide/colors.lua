@@ -3,19 +3,20 @@ local config = require("hydroxide.config")
 local M = {}
 
 -- Hydroxide palette: oxide hues, washed out toward no-clown-fiesta's
--- muted gray (#AFAFAF), with contrast compressed from both ends
--- (lifted background, dimmed foreground).
+-- muted gray (#AFAFAF). Monochrome extremes (background blacks and
+-- foreground whites) are kept at full oxide contrast; only the
+-- chromatic accents and mid-grays are washed.
 local palette = {
-	-- Surface colors (lifted slightly, cf. no-clown-fiesta-dim #262626)
-	mantle = "#191919", -- lifted mantle
-	base = "#1d1d1d", -- lifted main background
+	-- Surface colors: blacks at original oxide contrast
+	mantle = "#121212", -- oxide original
+	base = "#161616", -- oxide original
 	surface0 = "#272727", -- subtle backgrounds, cursor, visual
 	surface1 = "#323232", -- active selections
 	surface2 = "#404040", -- borders, lines
 
-	-- Text colors (extremes pulled inward for less glare)
-	bright_text = "#d8d8d8", -- was #eeeeee
-	text = "#c2c2c2", -- was #cecece
+	-- Text colors: whites at original oxide contrast
+	bright_text = "#eeeeee", -- oxide original
+	text = "#cecece", -- oxide original
 	subtext0 = "#a9a9a9", -- secondary text
 	subtext1 = "#808080", -- muted text
 	subtext2 = "#6e6e6e", -- comments (lifted from #555555 for readability)
