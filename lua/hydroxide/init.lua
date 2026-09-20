@@ -1,7 +1,7 @@
-local config = require("oxide_washed.config")
-local colors = require("oxide_washed.colors")
-local highlights = require("oxide_washed.highlights")
-local util = require("oxide_washed.util")
+local config = require("hydroxide.config")
+local colors = require("hydroxide.colors")
+local highlights = require("hydroxide.highlights")
+local util = require("hydroxide.util")
 
 local M = {}
 
@@ -20,7 +20,7 @@ function M.load(opts)
 	end
 
 	vim.o.termguicolors = true
-	vim.g.colors_name = "oxide-washed"
+	vim.g.colors_name = "hydroxide"
 
 	-- Get colors and highlights
 	local color_scheme = colors.setup(opts)

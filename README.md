@@ -1,8 +1,8 @@
-# oxide-washed
+# hydroxide
 
-A washed-out variant of [oxide](../nvim/) with the muted, pastel feel of
-[no-clown-fiesta](../no-clown-fiesta.nvim/). Same structure and highlight
-groups as oxide — only the palette in `lua/oxide_washed/colors.lua` changed.
+A washed-out variant of oxide with the muted, pastel feel of
+no-clown-fiesta. Same structure and highlight groups as oxide — only the
+palette in `lua/hydroxide/colors.lua` changed.
 
 ## What changed vs oxide
 
@@ -18,15 +18,15 @@ groups as oxide — only the palette in `lua/oxide_washed/colors.lua` changed.
 ## Try it
 
 ```lua
--- lazy.nvim (local path while iterating)
+-- lazy.nvim
 {
-  name = "oxide-washed",
-  dir = "/home/lucas/repos/colourscheme/newscheme",
+  "lucastcottle/hydroxide",
+  name = "hydroxide",
   lazy = false,
   priority = 1000,
   config = function()
-    require("oxide_washed").setup()
-    vim.cmd.colorscheme("oxide-washed")
+    require("hydroxide").setup()
+    vim.cmd.colorscheme("hydroxide")
   end,
 }
 ```
@@ -36,7 +36,7 @@ Same options as oxide (`transparent`, `terminal_colors`, `styles`,
 
 ## Tune the wash
 
-All the character lives in `lua/oxide_washed/colors.lua`. To go more or
+All the character lives in `lua/hydroxide/colors.lua`. To go more or
 less muted, re-blend any accent toward `#AFAFAF`:
 
 ```lua
@@ -46,8 +46,8 @@ colors.blue = "#7E97AB"  -- fully no-clown-fiesta gray-blue
 
 ## Palette
 
-| role | oxide | washed |
-|------|-------|--------|
+| role | oxide | hydroxide |
+|------|-------|-----------|
 | mantle / base | `#121212` / `#161616` | `#191919` / `#1d1d1d` |
 | text / bright | `#cecece` / `#eeeeee` | `#c2c2c2` / `#d8d8d8` |
 | red | `#ed756e` | `#d58b87` |

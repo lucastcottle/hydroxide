@@ -1,9 +1,9 @@
 {
-  "name": "oxide-washed",
+  "name": "hydroxide",
   "description": "Oxide hues, washed out with no-clown-fiesta's muted pastels",
   "repository": {
     "type": "git",
-    "url": "https://github.com/oxidescheme/nvim"
+    "url": "https://github.com/lucastcottle/hydroxide"
   },
   "engines": {
     "nvim": "^0.10.0"

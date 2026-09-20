@@ -1,8 +1,8 @@
-local config = require("oxide_washed.config")
+local config = require("hydroxide.config")
 
 local M = {}
 
--- Oxide-washed palette: oxide hues, washed out toward no-clown-fiesta's
+-- Hydroxide palette: oxide hues, washed out toward no-clown-fiesta's
 -- muted gray (#AFAFAF), with contrast compressed from both ends
 -- (lifted background, dimmed foreground).
 local palette = {

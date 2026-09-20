@@ -2,10 +2,10 @@
 local M = {}
 
 -- Import highlight modules
-local editor = require("oxide_washed.highlights.editor")
-local syntax = require("oxide_washed.highlights.syntax")
-local treesitter = require("oxide_washed.highlights.treesitter")
-local lsp = require("oxide_washed.highlights.lsp")
+local editor = require("hydroxide.highlights.editor")
+local syntax = require("hydroxide.highlights.syntax")
+local treesitter = require("hydroxide.highlights.treesitter")
+local lsp = require("hydroxide.highlights.lsp")
 
 -- Auto-load all integration files
 local function load_all_integrations(colors, config)
@@ -14,7 +14,7 @@ local function load_all_integrations(colors, config)
 	-- Get the runtime path to find integration files
 	local integration_files = vim.fn.globpath(
 		table.concat(vim.api.nvim_list_runtime_paths(), ","),
-		"lua/oxide_washed/highlights/integrations/*.lua",
+		"lua/hydroxide/highlights/integrations/*.lua",
 		false,
 		true
 	)
@@ -23,7 +23,7 @@ local function load_all_integrations(colors, config)
 		-- Extract module name from filepath
 		local module_name = filepath:match("integrations/([^/]+)%.lua$")
 		if module_name then
-			local module_path = "oxide_washed.highlights.integrations." .. module_name
+			local module_path = "hydroxide.highlights.integrations." .. module_name
 
 			-- Try to require and setup the integration
 			local success, integration_module = pcall(require, module_path)

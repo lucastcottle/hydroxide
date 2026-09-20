@@ -1,5 +1,5 @@
--- Get oxide-washed palette and configuration (dark-only)
-local palette_setup = require("oxide_washed.colors").setup()
+-- Hydroxide lualine theme (dark-only)
+local palette_setup = require("hydroxide.colors").setup()
 local colors = palette_setup.colors
 local config = palette_setup.config
 
