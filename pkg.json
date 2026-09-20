@@ -1,0 +1,11 @@
+{
+  "name": "oxide-washed",
+  "description": "Oxide hues, washed out with no-clown-fiesta's muted pastels",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/oxidescheme/nvim"
+  },
+  "engines": {
+    "nvim": "^0.10.0"
+  }
+}

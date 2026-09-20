@@ -1,0 +1,62 @@
+-- Main highlight manager
+local M = {}
+
+-- Import highlight modules
+local editor = require("oxide_washed.highlights.editor")
+local syntax = require("oxide_washed.highlights.syntax")
+local treesitter = require("oxide_washed.highlights.treesitter")
+local lsp = require("oxide_washed.highlights.lsp")
+
+-- Auto-load all integration files
+local function load_all_integrations(colors, config)
+	local integrations = {}
+
+	-- Get the runtime path to find integration files
+	local integration_files = vim.fn.globpath(
+		table.concat(vim.api.nvim_list_runtime_paths(), ","),
+		"lua/oxide_washed/highlights/integrations/*.lua",
+		false,
+		true
+	)
+
+	for _, filepath in ipairs(integration_files) do
+		-- Extract module name from filepath
+		local module_name = filepath:match("integrations/([^/]+)%.lua$")
+		if module_name then
+			local module_path = "oxide_washed.highlights.integrations." .. module_name
+
+			-- Try to require and setup the integration
+			local success, integration_module = pcall(require, module_path)
+			if success and integration_module and type(integration_module.setup) == "function" then
+				local int_success, integration_highlights = pcall(integration_module.setup, colors, config)
+				if int_success and integration_highlights then
+					integrations = vim.tbl_extend("force", integrations, integration_highlights)
+				end
+			end
+		end
+	end
+
+	return integrations
+end
+
+function M.setup(colors, config)
+	local highlights = {}
+
+	-- Merge all highlight groups
+	highlights = vim.tbl_extend("force", highlights, editor.setup(colors, config))
+	highlights = vim.tbl_extend("force", highlights, syntax.setup(colors, config))
+	highlights = vim.tbl_extend("force", highlights, treesitter.setup(colors, config))
+	highlights = vim.tbl_extend("force", highlights, lsp.setup(colors, config))
+
+	-- Merge integrations (auto-discovered)
+	highlights = vim.tbl_extend("force", highlights, load_all_integrations(colors, config))
+
+	-- Apply user overrides
+	if config.on_highlights then
+		highlights = config.on_highlights(highlights, colors) or highlights
+	end
+
+	return highlights
+end
+
+return M
